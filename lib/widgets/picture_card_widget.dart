@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gallery/models/picture_model.dart';
 import 'package:gallery/widgets/faworite_picture_button_widget.dart';
@@ -13,8 +14,8 @@ class PictureCardWidget extends StatelessWidget {
       children: [
         Card(
           clipBehavior: Clip.hardEdge,
-          child: Image.asset(
-            picture.url,
+          child: Image.file(
+            File(picture.url),
             width: double.infinity,
             height: double.infinity,
             fit: BoxFit.cover,

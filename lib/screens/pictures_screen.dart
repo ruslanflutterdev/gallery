@@ -11,7 +11,7 @@ class PicturesScreen extends ConsumerWidget {
     final pictures = ref.watch(picturesProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Галерея'),centerTitle: false,),
+      appBar: AppBar(title: Text('Галерея'), centerTitle: false),
       body: PicturesGridViewWidget(pictures: pictures),
     );
   }

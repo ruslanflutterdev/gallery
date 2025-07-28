@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gallery/core/routers.dart';
 import 'package:gallery/screens/pictures_favorite_screen.dart';
 import 'package:gallery/screens/pictures_screen.dart';
 
@@ -37,9 +38,16 @@ class _MainScreenState extends State<MainScreen> {
     super.dispose();
   }
 
+  void _create() {
+    Navigator.of(context).pushNamed(Routers.createPicture);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [IconButton(onPressed: _create, icon: Icon(Icons.add))],
+      ),
       body: PageView(
         controller: _pageController,
         children: [PicturesScreen(), PicturesFavoriteScreen()],

@@ -5,11 +5,12 @@ class FavoritesNotifier extends Notifier<List<int>> {
   List<int> build() => [];
 
   void toggle(int id) {
-    if(isFavorite(id)) {
+    if (isFavorite(id)) {
       state = state.where((values) => values != id).toList();
     } else {
       state = [...state, id];
     }
   }
+
   bool isFavorite(int id) => state.contains(id);
 }
