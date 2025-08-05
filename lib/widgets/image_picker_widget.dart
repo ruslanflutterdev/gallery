@@ -13,17 +13,17 @@ class ImagePickerWidget extends StatelessWidget {
     required this.onTakeFile,
   });
 
-  Future<void> _addImage() async {
+  VoidCallback _addImage(ImageSource source) => () async {
     try {
       final imagePicker = ImagePicker();
-      final result = await imagePicker.pickImage(source: ImageSource.camera);
+      final result = await imagePicker.pickImage(source: source);
       if (result == null) return;
       final file = File(result.path);
       onTakeFile(file);
     } catch (err) {
       log(err.toString());
     }
-  }
+  };
 
   void _clear() => onTakeFile(null);
 
@@ -35,7 +35,8 @@ class ImagePickerWidget extends StatelessWidget {
           Image.file(file!),
           ElevatedButton(onPressed: _clear, child: Text('Очистить')),
         ],
-          ElevatedButton(onPressed: _addImage, child: Text('Выбрать картинку')),
+          ElevatedButton(onPressed: _addImage(ImageSource.camera), child: Text('Сделать фото')),
+        ElevatedButton(onPressed: _addImage(ImageSource.gallery), child: Text('Выбрать фото')),
       ],
     );
   }
