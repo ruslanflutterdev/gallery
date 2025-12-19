@@ -1,16 +1,41 @@
-# gallery
+# 🖼️ Photo Gallery App
 
-A new Flutter project.
+**Gallery App** — это красивое и удобное мобильное приложение на Flutter для организации ваших фотографий. Приложение позволяет просматривать галерею, добавлять новые снимки с камеры или из памяти устройства, а также отмечать любимые кадры.
 
-## Getting Started
+## ✨ Основные возможности
 
-This project is a starting point for a Flutter application.
+* **📂 Просмотр галереи**: Отображение всех изображений в виде удобной сетки.
+* **➕ Добавление фото**: Возможность загрузить новое изображение из галереи устройства или сделать снимок камерой.
+* **❤️ Избранное**: Добавляйте понравившиеся фотографии в список «Избранное» (Favorites) одним нажатием на сердечко.
+* **⭐ Отдельный экран избранного**: Быстрый доступ ко всем отмеченным фотографиям.
+* **📱 Адаптивный интерфейс**: Использование стандартных виджетов Material Design.
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠 Технологический стек
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* **Фреймворк**: [Flutter](https://flutter.dev/) (Dart)
+* **Управление состоянием**: [Provider](https://pub.dev/packages/provider) — используется для управления списком фотографий и статусом «избранное» (`FavoritesNotifier`, `PicturesNotifier`).
+* **Работа с изображениями**: `image_picker` — для доступа к камере и галерее.
+* **Файловая система**: `path_provider` — для работы с путями к файлам.
+* **Утилиты**: `uuid` — для генерации уникальных ID изображений.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📂 Структура проекта
+
+Проект разделен на слои для удобства поддержки и масштабирования:
+
+```text
+lib/
+├── controllers/      # Логика управления состоянием (Notifiers)
+├── core/             # Настройки маршрутизации (AppRoutes)
+├── data/             # Начальные данные (mock data)
+├── models/           # Модели данных (PictureModel)
+├── providers/        # Обертки провайдеров для UI
+├── screens/          # Экраны приложения
+│   ├── main_screen.dart             # Главный экран с навигацией
+│   ├── pictures_screen.dart         # Экран общей галереи
+│   ├── pictures_favorite_screen.dart# Экран избранного
+│   └── picture_create_screen.dart   # Экран добавления фото
+├── widgets/          # Переиспользуемые компоненты
+│   ├── picture_card_widget.dart     # Карточка фото
+│   ├── image_picker_widget.dart     # Виджет выбора фото
+│   └── pictures_grid_view_widget.dart # Сетка изображений
+└── main.dart         # Точка входа
